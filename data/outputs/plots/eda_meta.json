@@ -1,0 +1,21 @@
+{
+  "shape": [
+    50000,
+    11
+  ],
+  "num_cols": [
+    "Year",
+    "Engine_Size_L",
+    "Mileage_KM",
+    "Price_USD",
+    "Sales_Volume"
+  ],
+  "cat_cols": [
+    "Model",
+    "Region",
+    "Color",
+    "Fuel_Type",
+    "Transmission",
+    "Sales_Classification"
+  ]
+}

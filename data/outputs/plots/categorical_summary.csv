@@ -1,0 +1,5 @@
+,Model,Region,Color,Fuel_Type,Transmission,Sales_Classification
+count,50000,50000,50000,50000,50000,50000
+unique,11,6,6,4,2,2
+top,7 Series,Asia,Red,Hybrid,Manual,Low
+freq,4666,8454,8463,12716,25154,34754

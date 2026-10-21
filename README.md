@@ -9,7 +9,7 @@ ejecutarse y probarse de forma independiente.
 ```text
 src/
 ├── analysis/       # Estadísticas descriptivas y gráficos de EDA
-├── data/           # Carga de CSV y compatibilidad con el módulo anterior
+├── data/           # Carga de CSV y compatibilidad con el módulo anterior, exporta salidas gráficas y procesos númericos
 ├── preprocessing/  # Creación de features y división entrenamiento/prueba
 ├── utils/          # Limpieza y validación de datos
 └── main.py         # Orquestación del flujo

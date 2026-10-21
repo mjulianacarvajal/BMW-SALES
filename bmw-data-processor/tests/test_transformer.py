@@ -8,7 +8,8 @@ class TestSaveEdaOutputs(unittest.TestCase):
     def setUp(self):
         self.df = pd.DataFrame({
             'Price_USD': [20000, 30000, 25000],
-            'Year': [2015, 2016, 2017]
+            'Year': [2015, 2016, 2017],
+            'Sales_Classification': ['Low', 'High', 'Medium']
         })
         self.out_dir = 'test_outputs'
 
@@ -18,7 +19,8 @@ class TestSaveEdaOutputs(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.out_dir, 'numeric_summary.csv')))
         self.assertTrue(os.path.exists(os.path.join(self.out_dir, 'categorical_summary.csv')))
         self.assertTrue(os.path.exists(os.path.join(self.out_dir, 'eda_meta.json')))
-        # Add more assertions as needed to validate the content of the files
+        self.assertTrue(os.path.exists(os.path.join(self.out_dir, 'target_distribution_count.png')))
+        self.assertTrue(os.path.exists(os.path.join(self.out_dir, 'target_distribution_with_stats.png')))
 
     def tearDown(self):
         # Clean up the output directory after tests

@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from src.analysis.eda import preparar_datos
+from src.preprocessing.prepare import preparar_datos
 
 class TestEDAFunctions(unittest.TestCase):
 
@@ -17,13 +17,14 @@ class TestEDAFunctions(unittest.TestCase):
         # Check if the shapes are correct
         self.assertEqual(X_train.shape[0], 3)
         self.assertEqual(X_test.shape[0], 1)
+        self.assertIn('Car_Age', X_train.columns)
 
         # Check if the target column is separated correctly
         self.assertIn('Price_USD', y_train.name)
         self.assertIn('Price_USD', y_test.name)
 
         # Check if numerical columns are identified correctly
-        self.assertEqual(num_cols, ['Year'])
+        self.assertEqual(num_cols, ['Year', 'Car_Age'])
         self.assertEqual(cat_cols, [])
 
 if __name__ == '__main__':

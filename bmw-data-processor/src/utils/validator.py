@@ -1,4 +1,7 @@
-def transformar_datos(df, columnas_a_mantener):
+import pandas as pd
+
+
+def transformar_datos(df: pd.DataFrame, columnas_a_mantener: list[str]) -> pd.DataFrame:
     """
     Transforma un DataFrame eliminando duplicados, valores nulos y columnas no deseadas.
 
@@ -9,8 +12,10 @@ def transformar_datos(df, columnas_a_mantener):
     Returns:
         pd.DataFrame: El DataFrame transformado.
     """
-    # Seleccionar solo las columnas a mantener
-    df = df[columnas_a_mantener]
+    if not columnas_a_mantener:
+        return pd.DataFrame()
+
+    df = df[columnas_a_mantener].copy()
     df = df.drop_duplicates()
     df = df.dropna()        
     return df

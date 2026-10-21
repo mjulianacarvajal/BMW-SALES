@@ -31,4 +31,11 @@ def test_limpiar_y_verificar_data():
     assert cleaned_df_whitespace['Price_USD'].iloc[0] == 20000
     assert cleaned_df_whitespace['Year'].iloc[0] == 2015
 
+    # Cleaning should preserve nulls and leave the input DataFrame unchanged.
+    df_with_nulls = pd.DataFrame({' Model ': [' X5 ', None]})
+    cleaned_df_with_nulls = limpiar_y_verificar_data(df_with_nulls, [])
+    assert cleaned_df_with_nulls['Model'].iloc[0] == 'X5'
+    assert pd.isna(cleaned_df_with_nulls['Model'].iloc[1])
+    assert df_with_nulls.columns.tolist() == [' Model ']
+
     print("All tests passed!")

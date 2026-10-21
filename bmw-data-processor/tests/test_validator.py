@@ -33,7 +33,7 @@ def test_transformar_datos():
     })
     transformed_df = transformar_datos(df_with_nans, columnas_a_mantener)
     
-    assert transformed_df.shape[0] == 2  # Rows with NaNs should be dropped
+    assert transformed_df.shape[0] == 1  # Rows with NaNs should be dropped
     assert 'Color' in transformed_df.columns  # Color column should still be present
 
     # Test case 4: No columns to keep

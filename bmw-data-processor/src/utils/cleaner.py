@@ -1,4 +1,12 @@
-def limpiar_y_verificar_data(df, columnas_esperadas):
+import logging
+
+import pandas as pd
+
+
+logger = logging.getLogger(__name__)
+
+
+def limpiar_y_verificar_data(df: pd.DataFrame, columnas_esperadas: list[str]) -> pd.DataFrame:
     """
     Limpia un DataFrame quitando espacios en headers y valores string, 
     y verifica la presencia de columnas esperadas.
@@ -10,13 +18,15 @@ def limpiar_y_verificar_data(df, columnas_esperadas):
     Returns:
         pd.DataFrame: El DataFrame limpio.
     """
-    # Limpieza ligera: quita espacios en headers y valores tipo string
-    df.columns = df.columns.str.strip()
-    for col in df.select_dtypes(include=["object"]).columns:
-        df[col] = df[col].astype(str).str.strip()
+    df = df.copy()
+    df.columns = [column.strip() if isinstance(column, str) else column for column in df.columns]
+    for col in df.select_dtypes(include=["object", "string"]).columns:
+        df[col] = df[col].map(lambda value: value.strip() if isinstance(value, str) else value)
 
-    # Revisa columnas esperadas
     faltantes = set(columnas_esperadas) - set(df.columns)
     if faltantes:
-        print(f"[ADVERTENCIA] Faltan columnas: {faltantes}. El pipeline seguirá con las disponibles.")
+        logger.warning(
+            "Faltan columnas esperadas: %s. El pipeline continuará con las disponibles.",
+            sorted(faltantes),
+        )
     return df

@@ -17,5 +17,11 @@
     "Fuel_Type",
     "Transmission",
     "Sales_Classification"
-  ]
+  ],
+  "price_usd": {
+    "mean": 75034.6009,
+    "median": 75011.5,
+    "min": 30000.0,
+    "max": 119998.0
+  }
 }
